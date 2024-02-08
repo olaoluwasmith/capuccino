@@ -31,6 +31,13 @@ class DetailPage extends StatelessWidget {
             returnBackIcon: 'assets/images/arrow-left.jpg',
             favouriteIcon: 'assets/images/Heart.jpg'),
       ),
+      body: const SingleChildScrollView(
+        child: Column(
+          children: [
+            ItemImageSection(image: 'assets/images/Rectangle 1706.jpg')
+          ],
+        ),
+      ),
     );
   }
 }
@@ -74,6 +81,24 @@ class AppBarSection extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class ItemImageSection extends StatelessWidget {
+  const ItemImageSection({super.key, required this.image});
+
+  final String image;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Image.asset(
+          image,
+        ),
+      ),
     );
   }
 }
