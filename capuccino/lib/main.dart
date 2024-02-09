@@ -64,6 +64,7 @@ class DetailPage extends StatelessWidget {
                     'with 25ml of expresso coffee and 85ml of fresh milk the fo... ',
                 readMore: 'Read More'),
             ItemSizeSection(sizeTitle: 'Size'),
+            BuySection(),
           ],
         ),
       ),
@@ -126,6 +127,7 @@ class ItemImageSection extends StatelessWidget {
         padding: const EdgeInsets.all(15.0),
         child: Image.asset(
           image,
+          fit: BoxFit.fitWidth,
         ),
       ),
     );
@@ -313,8 +315,8 @@ class SizeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 110,
-      height: 50,
+      width: 100,
+      height: 45,
       decoration: BoxDecoration(
         color: backgroundColor,
         border: Border.all(color: borderColor, width: 1),
@@ -378,6 +380,68 @@ class ItemSizeSection extends StatelessWidget {
             ],
           )
         ],
+      ),
+    );
+  }
+}
+
+class BuySection extends StatelessWidget {
+  const BuySection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 30.0, right: 30.0, top: 15),
+      child: SizedBox(
+        height: 100,
+        child: Row(
+          children: [
+            const Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Price",
+                    style: TextStyle(
+                      color: MyApp.grey,
+                      fontFamily: "Sora",
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Text(
+                    "\$ 4.53",
+                    style: TextStyle(
+                      color: MyApp.brown,
+                      fontFamily: "Sora",
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              width: 200,
+              height: 60,
+              decoration: BoxDecoration(
+                color: MyApp.brown,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: const Center(
+                child: Text(
+                  "Buy Now",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
