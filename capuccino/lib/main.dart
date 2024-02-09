@@ -34,7 +34,15 @@ class DetailPage extends StatelessWidget {
       body: const SingleChildScrollView(
         child: Column(
           children: [
-            ItemImageSection(image: 'assets/images/Rectangle 1706.jpg')
+            ItemImageSection(image: 'assets/images/Rectangle 1706.jpg'),
+            ItemRatingSection(
+              itemText: 'Capuccino',
+              itemOption: 'with Chocolate',
+              ratingValue: '4.8',
+              numOfPeople: '(230)',
+              beanIcon: 'assets/images/bean.jpg',
+              milkIcon: 'assets/images/milk.jpg',
+            )
           ],
         ),
       ),
@@ -98,6 +106,112 @@ class ItemImageSection extends StatelessWidget {
         child: Image.asset(
           image,
         ),
+      ),
+    );
+  }
+}
+
+class ItemRatingSection extends StatelessWidget {
+  const ItemRatingSection(
+      {super.key,
+      required this.itemText,
+      required this.itemOption,
+      required this.ratingValue,
+      required this.numOfPeople,
+      required this.beanIcon,
+      required this.milkIcon});
+
+  final String itemText;
+  final String itemOption;
+  final String ratingValue;
+  final String numOfPeople;
+  final String beanIcon;
+  final String milkIcon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 30, right: 30),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  itemText,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontFamily: "Sora",
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
+                  child: Text(
+                    itemOption,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontFamily: "Sora",
+                      fontSize: 15.0,
+                    ),
+                  ),
+                ),
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.star,
+                      color: Colors.yellow,
+                    ),
+                    const SizedBox(width: 2.0),
+                    Text(
+                      ratingValue,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontFamily: "Sora",
+                        fontWeight: FontWeight.bold,
+                        fontSize: 19.0,
+                      ),
+                    ),
+                    const SizedBox(width: 3.0),
+                    Text(
+                      numOfPeople,
+                      style: const TextStyle(
+                        color: Colors.grey,
+                        fontFamily: "Sora",
+                        fontSize: 15.0,
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+          Row(
+            children: [
+              Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                child: Image.asset(beanIcon),
+              ),
+              const SizedBox(width: 10.0),
+              Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                child: Image.asset(milkIcon),
+              )
+            ],
+          ),
+        ],
       ),
     );
   }
