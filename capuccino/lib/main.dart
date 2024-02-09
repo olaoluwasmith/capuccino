@@ -7,6 +7,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This are the variables for the colors used for this project
   static const Color black = Color(0xFF2F2D2C);
   static const Color yellow = Color(0xFFFBBE21);
   static const Color brown = Color(0xFFC67C4E);
@@ -51,6 +52,7 @@ class DetailPage extends StatelessWidget {
               beanIcon: 'assets/images/bean.png',
               milkIcon: 'assets/images/milk.png',
             ),
+            // Adding a divider between the item menu and the description
             Divider(
               color: MyApp.divider,
               // height: 30,
@@ -115,6 +117,7 @@ class AppBarSection extends StatelessWidget {
   }
 }
 
+// This widget handles the item image from the image assets
 class ItemImageSection extends StatelessWidget {
   const ItemImageSection({super.key, required this.image});
 
@@ -211,28 +214,31 @@ class ItemRatingSection extends StatelessWidget {
               ],
             ),
           ),
-          Row(
-            children: [
-              Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: MyApp.lightgrey,
-                  borderRadius: BorderRadius.circular(15.0),
+          Padding(
+            padding: const EdgeInsets.only(top: 30.0),
+            child: Row(
+              children: [
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: MyApp.lightgrey,
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  child: Image.asset(beanIcon),
                 ),
-                child: Image.asset(beanIcon),
-              ),
-              const SizedBox(width: 10.0),
-              Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: MyApp.lightgrey,
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                child: Image.asset(milkIcon),
-              )
-            ],
+                const SizedBox(width: 10.0),
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: MyApp.lightgrey,
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  child: Image.asset(milkIcon),
+                )
+              ],
+            ),
           ),
         ],
       ),
@@ -299,6 +305,7 @@ class ItemDescriptionSection extends StatelessWidget {
   }
 }
 
+// Buttons to be reused
 class SizeButton extends StatelessWidget {
   const SizeButton(
       {super.key,
@@ -391,7 +398,7 @@ class BuySection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 30.0, right: 30.0, top: 15),
+      padding: const EdgeInsets.only(left: 30.0, right: 30.0, top: 13),
       child: SizedBox(
         height: 100,
         child: Row(
