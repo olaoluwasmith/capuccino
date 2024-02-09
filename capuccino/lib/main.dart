@@ -7,6 +7,12 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  static const Color black = Color(0xFF2F2D2C);
+  static const Color yellow = Color(0xFFFBBE21);
+  static const Color brown = Color(0xFFC67C4E);
+  static const Color grey = Color(0xFF9B9B9B);
+  static const Color lightgrey = Color(0xFFF5F5F5);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -40,9 +46,15 @@ class DetailPage extends StatelessWidget {
               itemOption: 'with Chocolate',
               ratingValue: '4.8',
               numOfPeople: '(230)',
-              beanIcon: 'assets/images/bean.jpg',
-              milkIcon: 'assets/images/milk.jpg',
-            )
+              beanIcon: 'assets/images/bean.png',
+              milkIcon: 'assets/images/milk.png',
+            ),
+            ItemDescriptionSection(
+                descriptionTitle: 'Description',
+                description:
+                    'A cappucino is an approximately 150ml (5 oz) beverage,'
+                    'with 25ml of expresso coffee and 85ml of fresh milk the fo..',
+                readMore: 'Read More')
           ],
         ),
       ),
@@ -76,7 +88,7 @@ class AppBarSection extends StatelessWidget {
         Text(
           titleText,
           style: const TextStyle(
-            color: Colors.black,
+            color: MyApp.black,
             fontFamily: "Sora",
             fontWeight: FontWeight.bold,
             fontSize: 20.0,
@@ -141,7 +153,7 @@ class ItemRatingSection extends StatelessWidget {
                 Text(
                   itemText,
                   style: const TextStyle(
-                    color: Colors.black,
+                    color: MyApp.black,
                     fontFamily: "Sora",
                     fontWeight: FontWeight.bold,
                     fontSize: 22,
@@ -152,7 +164,7 @@ class ItemRatingSection extends StatelessWidget {
                   child: Text(
                     itemOption,
                     style: const TextStyle(
-                      color: Colors.black,
+                      color: MyApp.black,
                       fontFamily: "Sora",
                       fontSize: 15.0,
                     ),
@@ -162,13 +174,13 @@ class ItemRatingSection extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.star,
-                      color: Colors.yellow,
+                      color: MyApp.yellow,
                     ),
                     const SizedBox(width: 2.0),
                     Text(
                       ratingValue,
                       style: const TextStyle(
-                        color: Colors.black,
+                        color: MyApp.black,
                         fontFamily: "Sora",
                         fontWeight: FontWeight.bold,
                         fontSize: 19.0,
@@ -178,7 +190,7 @@ class ItemRatingSection extends StatelessWidget {
                     Text(
                       numOfPeople,
                       style: const TextStyle(
-                        color: Colors.grey,
+                        color: MyApp.grey,
                         fontFamily: "Sora",
                         fontSize: 15.0,
                       ),
@@ -194,7 +206,7 @@ class ItemRatingSection extends StatelessWidget {
                 width: 50,
                 height: 50,
                 decoration: BoxDecoration(
-                  color: Colors.grey,
+                  color: MyApp.lightgrey,
                   borderRadius: BorderRadius.circular(15.0),
                 ),
                 child: Image.asset(beanIcon),
@@ -204,13 +216,70 @@ class ItemRatingSection extends StatelessWidget {
                 width: 50,
                 height: 50,
                 decoration: BoxDecoration(
-                  color: Colors.grey,
+                  color: MyApp.lightgrey,
                   borderRadius: BorderRadius.circular(15.0),
                 ),
                 child: Image.asset(milkIcon),
               )
             ],
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class ItemDescriptionSection extends StatelessWidget {
+  const ItemDescriptionSection(
+      {super.key,
+      required this.descriptionTitle,
+      required this.description,
+      required this.readMore});
+
+  final String descriptionTitle;
+  final String description;
+  final String readMore;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(40.0, 10.0, 40.0, 40.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 12.0),
+            child: Text(
+              descriptionTitle,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                fontFamily: "Sora",
+                color: MyApp.black,
+              ),
+            ),
+          ),
+          RichText(
+              text: TextSpan(
+            children: [
+              TextSpan(
+                text: description,
+                style: const TextStyle(
+                  fontFamily: "Sora",
+                  color: MyApp.grey,
+                  letterSpacing: 1.5,
+                ),
+              ),
+              TextSpan(
+                  text: readMore,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Sora",
+                    color: MyApp.brown,
+                    letterSpacing: 1.5,
+                  ))
+            ],
+          ))
         ],
       ),
     );
