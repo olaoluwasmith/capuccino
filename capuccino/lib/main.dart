@@ -12,6 +12,8 @@ class MyApp extends StatelessWidget {
   static const Color brown = Color(0xFFC67C4E);
   static const Color grey = Color(0xFF9B9B9B);
   static const Color lightgrey = Color(0xFFF5F5F5);
+  static const Color divider = Color(0xFFEBEBEB);
+  static const Color lightbrown = Color(0xFFF6EBE4);
 
   // This widget is the root of your application.
   @override
@@ -49,12 +51,19 @@ class DetailPage extends StatelessWidget {
               beanIcon: 'assets/images/bean.png',
               milkIcon: 'assets/images/milk.png',
             ),
+            Divider(
+              color: MyApp.divider,
+              // height: 30,
+              indent: 30,
+              endIndent: 30,
+            ),
             ItemDescriptionSection(
                 descriptionTitle: 'Description',
                 description:
-                    'A cappucino is an approximately 150ml (5 oz) beverage,'
-                    'with 25ml of expresso coffee and 85ml of fresh milk the fo..',
-                readMore: 'Read More')
+                    'A cappucino is an approximately 150ml (5 oz) beverage, '
+                    'with 25ml of expresso coffee and 85ml of fresh milk the fo... ',
+                readMore: 'Read More'),
+            ItemSizeSection(sizeTitle: 'Size'),
           ],
         ),
       ),
@@ -243,7 +252,7 @@ class ItemDescriptionSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(40.0, 10.0, 40.0, 40.0),
+      padding: const EdgeInsets.only(left: 30.0, right: 30.0, top: 15.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -252,10 +261,10 @@ class ItemDescriptionSection extends StatelessWidget {
             child: Text(
               descriptionTitle,
               style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                fontFamily: "Sora",
                 color: MyApp.black,
+                fontFamily: "Sora",
+                fontWeight: FontWeight.bold,
+                fontSize: 19,
               ),
             ),
           ),
@@ -265,21 +274,109 @@ class ItemDescriptionSection extends StatelessWidget {
               TextSpan(
                 text: description,
                 style: const TextStyle(
-                  fontFamily: "Sora",
                   color: MyApp.grey,
-                  letterSpacing: 1.5,
+                  fontFamily: "Sora",
+                  fontSize: 17,
+                  height: 1.5,
+                  wordSpacing: 1.3,
                 ),
               ),
               TextSpan(
                   text: readMore,
                   style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Sora",
                     color: MyApp.brown,
-                    letterSpacing: 1.5,
+                    fontFamily: "Sora",
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
                   ))
             ],
           ))
+        ],
+      ),
+    );
+  }
+}
+
+class SizeButton extends StatelessWidget {
+  const SizeButton(
+      {super.key,
+      required this.text,
+      required this.textColor,
+      required this.backgroundColor,
+      required this.borderColor});
+
+  final String text;
+  final Color textColor;
+  final Color backgroundColor;
+  final Color borderColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 110,
+      height: 50,
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        border: Border.all(color: borderColor, width: 1),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Center(
+        child: Text(
+          text,
+          style: TextStyle(
+            color: textColor,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ItemSizeSection extends StatelessWidget {
+  const ItemSizeSection({super.key, required this.sizeTitle});
+
+  final String sizeTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 15, left: 30, right: 30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: Text(sizeTitle,
+                style: const TextStyle(
+                  color: MyApp.black,
+                  fontFamily: "Sora",
+                  fontWeight: FontWeight.bold,
+                  fontSize: 19,
+                )),
+          ),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizeButton(
+                text: "S",
+                borderColor: MyApp.grey,
+                backgroundColor: Colors.white,
+                textColor: MyApp.black,
+              ),
+              SizeButton(
+                text: "M",
+                borderColor: MyApp.brown,
+                backgroundColor: MyApp.lightbrown,
+                textColor: MyApp.brown,
+              ),
+              SizeButton(
+                text: "L",
+                borderColor: MyApp.grey,
+                backgroundColor: Colors.white,
+                textColor: MyApp.black,
+              ),
+            ],
+          )
         ],
       ),
     );
