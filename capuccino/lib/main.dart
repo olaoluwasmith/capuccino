@@ -8,6 +8,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This are the variables for the colors used for this project
+  static const Color bgColor = Color(0xFFFBFBFB);
   static const Color black = Color(0xFF2F2D2C);
   static const Color yellow = Color(0xFFFBBE21);
   static const Color brown = Color(0xFFC67C4E);
@@ -22,7 +23,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Capuccino',
-      theme: ThemeData(),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: MyApp.bgColor,
+          // brightness: Brightness.dark,
+        ),
+      ),
       home: const DetailPage(),
     );
   }
@@ -127,7 +133,7 @@ class ItemImageSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.fromLTRB(15, 11, 15, 15),
         child: Image.asset(
           image,
           fit: BoxFit.fitWidth,
@@ -349,7 +355,7 @@ class ItemSizeSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 15, left: 30, right: 30),
+      padding: const EdgeInsets.only(top: 15, left: 30, right: 30, bottom: 5),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -369,7 +375,7 @@ class ItemSizeSection extends StatelessWidget {
               SizeButton(
                 text: "S",
                 borderColor: MyApp.grey,
-                backgroundColor: Colors.white,
+                backgroundColor: MyApp.bgColor,
                 textColor: MyApp.black,
               ),
               SizeButton(
@@ -381,7 +387,7 @@ class ItemSizeSection extends StatelessWidget {
               SizeButton(
                 text: "L",
                 borderColor: MyApp.grey,
-                backgroundColor: Colors.white,
+                backgroundColor: MyApp.bgColor,
                 textColor: MyApp.black,
               ),
             ],
@@ -398,56 +404,77 @@ class BuySection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 30.0, right: 30.0, top: 13),
-      child: SizedBox(
+      padding: const EdgeInsets.only(top: 13),
+      child: Container(
         height: 100,
-        child: Row(
-          children: [
-            const Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Price",
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          gradient: const LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [MyApp.bgColor, MyApp.bgColor],
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: MyApp.black.withOpacity(0.1),
+              // spreadRadius: 3,
+              blurRadius: 5,
+              offset: const Offset(
+                  0, -2), // Offset controls the position of the shadow
+            ),
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 30, right: 30),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Price",
+                      style: TextStyle(
+                        color: MyApp.grey,
+                        fontFamily: "Sora",
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                    Text(
+                      "\$ 4.53",
+                      style: TextStyle(
+                        color: MyApp.brown,
+                        fontFamily: "Sora",
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: 200,
+                height: 60,
+                decoration: BoxDecoration(
+                  color: MyApp.brown,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Center(
+                  child: Text(
+                    "Buy Now",
                     style: TextStyle(
-                      color: MyApp.grey,
-                      fontFamily: "Sora",
+                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     ),
                   ),
-                  Text(
-                    "\$ 4.53",
-                    style: TextStyle(
-                      color: MyApp.brown,
-                      fontFamily: "Sora",
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22,
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              width: 200,
-              height: 60,
-              decoration: BoxDecoration(
-                color: MyApp.brown,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: const Center(
-                child: Text(
-                  "Buy Now",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
                 ),
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );

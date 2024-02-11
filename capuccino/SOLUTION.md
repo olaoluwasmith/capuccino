@@ -19,6 +19,7 @@ The project employs a consistent color scheme for a visually appealing user inte
 - Light Grey: #F5F5F5
 - Divider Color: #EBEBEB
 - Light Brown: #F6EBE4
+- Theme: #FBFBFB
 These color constants are utilized throughout the application to maintain a cohesive and aesthetically pleasing design.
 
 ### Widgets
