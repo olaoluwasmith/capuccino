@@ -4,7 +4,7 @@
 
 Welcome to the Capuccino Flutter Project solution, an engaging project developed as part of the Software Engineering track at First Bank Tech Academy. This Flutter application is designed to facilitate an efficient learning experience, showcasing the implementation of stateless widgets.
 
-![Screenshot of Capuccino detail page]()
+![Screenshot of Capuccino detail page](assets/images/solution-image.png)
 
 ## Project Structure
 

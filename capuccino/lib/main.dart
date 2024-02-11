@@ -7,7 +7,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This are the variables for the colors used for this project
+  // These are the variables for the colors used for this project
   static const Color bgColor = Color(0xFFFBFBFB);
   static const Color black = Color(0xFF2F2D2C);
   static const Color yellow = Color(0xFFFBBE21);
@@ -98,7 +98,7 @@ class AppBarSection extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 15.0),
+          padding: const EdgeInsets.only(left: 13.0),
           child: Image.asset(
             returnBackIcon,
           ),
@@ -113,7 +113,7 @@ class AppBarSection extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(right: 15.0),
+          padding: const EdgeInsets.only(right: 13.0),
           child: Image.asset(
             favouriteIcon,
           ),
